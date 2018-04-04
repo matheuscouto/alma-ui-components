@@ -3,26 +3,26 @@ import * as React from 'react';
 //import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 
-import Sample from './';
+import CategoryType from './';
 
-storiesOf('CategoryButton', module)
+storiesOf('Category Type', module)
   .add('eletrico', () => (
-    <Sample
+    <CategoryType
     type="electric"
     />
   ))
   .add('hidraulico', () => (
-    <Sample
+    <CategoryType
       type="hidraulic"
     />
   ))
   .add('pintura', () => (
-    <Sample
+    <CategoryType
       type="painting"
     />
   ))
   .add('categoria', () => (
-    <Sample
+    <CategoryType
       type="category"
     />
   ));
