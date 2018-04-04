@@ -44,9 +44,6 @@ class CategoryButton extends React.Component<SampleButtonProps> {
   }
 
   private CategoryButton = styled.button`
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  font-size: 12px;
   width: 103px;
   height: 26px;
   border-radius: 4px;

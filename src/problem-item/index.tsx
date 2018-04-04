@@ -11,43 +11,9 @@ import CategoryType from '../category-type'
  
 library.add(faMedapps, faAnchor, faPaintBrush)
 
-export const CategoryTypes = {
-  hidraulic: {
-    label: 'HIDRAULICO',
-    color: '#4A90E2',
-    brand: false,
-    icon: 'anchor'
-  },
-  electric: {
-    label: 'ELÉTRICO',
-    color: '#F5A623',
-    brand: true,
-    icon: 'medapps'
-  },
-  painting: {
-    label: 'PINTURA',
-    color: '#FF1782',
-    brand: false,
-    icon: 'paint-brush'
-  },
-  category: {
-    label: 'CATEGORIA',
-    color: '#4A4A4A',
-    brand: false,
-    icon: ''
-  } 
-}
-
-/*export interface SampleButtonProps {
-  type: 'hidraulic' | 'electric' | 'painting' |'category';
-}*/
-
 
 class ProblemItem extends React.Component {
 
-  state = {
-    //type: this.props.type,
-  }
 
   private onClick = () => {
     console.log("oi")
