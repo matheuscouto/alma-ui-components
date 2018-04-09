@@ -2,63 +2,79 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { library } from '@fortawesome/fontawesome'
+import { library, IconName } from '@fortawesome/fontawesome'
 import { faMedapps } from '@fortawesome/fontawesome-free-brands'
 import { faAnchor, faPaintBrush } from '@fortawesome/fontawesome-free-solid'
- 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 library.add(faMedapps, faAnchor, faPaintBrush)
 
-export const CategoryTypes = {
+export interface ICategoryType {
+  label: string;
+  color: string;
+  brand: boolean;
+  icon: IconName;
+}
+
+export const CategoryTypes: { [type: string]: ICategoryType } = {
   hidraulic: {
     label: 'HIDRAULICO',
     color: '#4A90E2',
     brand: false,
-    icon: 'anchor'
+    icon: 'anchor',
   },
   electric: {
     label: 'ELÉTRICO',
     color: '#F5A623',
     brand: true,
-    icon: 'medapps'
+    icon: 'medapps',
   },
   painting: {
     label: 'PINTURA',
     color: '#FF1782',
     brand: false,
-    icon: 'paint-brush'
+    icon: 'paint-brush',
   },
   category: {
     label: 'CATEGORIA',
     color: '#4A4A4A',
     brand: false,
-    icon: ''
-  } 
+    icon: 'adjust',
+  }
 }
 
-export interface CategoryTypeProps {
+export interface ICategoryTypeProps {
   type: 'hidraulic' | 'electric' | 'painting' |'category';
 }
 
+export const TypeColor = styled.div`
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  color: ${CategoryTypes[this.props.type].color};
+`;
 
-class CategoryButton extends React.Component<CategoryTypeProps> {
+class CategoryButton extends React.Component<ICategoryTypeProps> {
 
-  state = {
+  public state = {
     type: this.props.type,
   }
 
-  private TypeColor = styled.div`
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    font-size: 12px;
-    color: ${CategoryTypes[this.props.type].color};
-  `;
-
   public render() {
     return (
-      <this.TypeColor>
-        {CategoryTypes[this.props.type].brand ? <FontAwesomeIcon icon={['fab',CategoryTypes[this.props.type].icon]}  /> : <FontAwesomeIcon icon={CategoryTypes[this.props.type].icon} />} {CategoryTypes[this.props.type].label}
-      </this.TypeColor>
+      <TypeColor>
+        {CategoryTypes[this.props.type].brand ? (
+          <FontAwesomeIcon
+            icon={['fab', CategoryTypes[this.props.type].icon]}
+          />
+        ) : (
+          <FontAwesomeIcon
+            icon={CategoryTypes[this.props.type].icon}
+          />
+        )}
+        {' '}
+        {CategoryTypes[this.props.type].label}
+      </TypeColor>
     );
   }
 }

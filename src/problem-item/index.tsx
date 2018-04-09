@@ -1,22 +1,16 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome'
 import { faMedapps } from '@fortawesome/fontawesome-free-brands'
-import { faAnchor } from '@fortawesome/fontawesome-free-solid'
-import { faPaintBrush } from '@fortawesome/fontawesome-free-solid'
+import { faAnchor, faPaintBrush } from '@fortawesome/fontawesome-free-solid'
 import CategoryType from '../category-type'
- 
-library.add(faMedapps, faAnchor, faPaintBrush)
 
+library.add(faMedapps, faAnchor, faPaintBrush)
 
 class ProblemItem extends React.Component {
 
-
   private onClick = () => {
-    console.log("oi")
     this.setState({
       status: 'clicked',
     });
@@ -33,7 +27,7 @@ class ProblemItem extends React.Component {
     font: inherit;
     cursor: pointer;
     outline: inherit;
-  
+
 `;
 
   private ProblemItemImage = styled.img`
@@ -41,7 +35,7 @@ class ProblemItem extends React.Component {
     height:88px;
     border-radius: 3px;
     margin-bottom 5px;
-  `;
+  `
 
   private ProblemItemTitle = styled.h3`
     font-family: 'Roboto', sans-serif;
@@ -64,10 +58,10 @@ class ProblemItem extends React.Component {
 
 
   public render() {
-    
-    const problemImage = require(`../image/pintura-mulher.jpg`);
-    const problemTitle = "Pintura de parede";
-    const problemPrice = "R$300";
+
+    const problemImage = require('../image/pintura-mulher.jpg');
+    const problemTitle = 'Pintura de parede';
+    const problemPrice = 'R$300';
     return (
       <this.ProblemItem type="submit" onClick={this.onClick}>
         <this.ProblemItemImage src={problemImage}/>
