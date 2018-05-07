@@ -11,17 +11,19 @@ import CategoryType from '../category-type'
  
 library.add(faMedapps, faAnchor, faPaintBrush)
 
+interface IProps {
+  withPrice: boolean;
+  problem: any;
+}
 
-class ProblemItem extends React.Component {
-
-
+class ProblemItem extends React.Component<IProps> {
+  
   private onClick = () => {
     console.log("oi")
     this.setState({
       status: 'clicked',
     });
   }
-
   private ProblemItem = styled.button`
     display: flex;
     flex-direction: column;
@@ -35,14 +37,12 @@ class ProblemItem extends React.Component {
     outline: inherit;
   
 `;
-
   private ProblemItemImage = styled.img`
     width:133px;
     height:88px;
     border-radius: 3px;
     margin-bottom 5px;
   `;
-
   private ProblemItemTitle = styled.h3`
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
@@ -51,7 +51,6 @@ class ProblemItem extends React.Component {
     text-align: left;
     color: #6C6A6C;
   `;
-
   private ProblemItemPrice = styled.h3`
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
@@ -64,20 +63,22 @@ class ProblemItem extends React.Component {
 
 
   public render() {
-    
-    const problemImage = require(`../image/pintura-mulher.jpg`);
-    const problemTitle = "Pintura de parede";
-    const problemPrice = "R$300";
+    const { withPrice, problem } = this.props;
+
     return (
       <this.ProblemItem type="submit" onClick={this.onClick}>
-        <this.ProblemItemImage src={problemImage}/>
+        <this.ProblemItemImage src={problem.image}/>
         <this.ProblemItemTitle>
-          {problemTitle}
+          {problem.title}
         </this.ProblemItemTitle>
-        <this.ProblemItemPrice>
-          {problemPrice}
-        </this.ProblemItemPrice>
-        <CategoryType type="painting"/>
+        {
+          (withPrice) && (
+            <this.ProblemItemPrice>
+              {`R$${problem.price}`}
+            </this.ProblemItemPrice>
+          )
+        }
+        <CategoryType type={problem.type}/>
       </this.ProblemItem>
     );
   }
